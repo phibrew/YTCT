@@ -3,17 +3,14 @@
   "version": "1.0.0",
   "description": "builiding a basic backend",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },
   "keywords": [
     "javascript",
     "backend"
   ],
   "author": "pie",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^3.1.9",
-    "prettier": "^3.5.0"
-  }
+  "license": "ISC"
 }
