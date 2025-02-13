@@ -9,9 +9,15 @@ app.use(cors({
     credentials: true
 }))
 
-app.use(express.json({limit: "20kb"}));
+app.use(express.json({ limit: "20kb" }));
 app.use(express.urlencoded({limit: "20kb", extended: true}));
 app.use(express.static("public"));
 app.use(cookieParser());    
 
-export {app};
+
+//routes import 
+import userRouter from './routes/user.route.js';
+app.use("/api/v1/user", userRouter);
+
+//http://localhost:8000/api/v1/users/register
+export { app };

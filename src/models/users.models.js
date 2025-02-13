@@ -62,7 +62,7 @@ userSchema.methods.verifyPassword = async function(password){
     return await bcrypt.compare(password, this.password);
 }
 
-userSchema.methods.generateAccessToken = functon(){
+userSchema.methods.generateAccessToken = function(){
     return jwt.sign(
         {
         _id: this.userId,
@@ -72,7 +72,7 @@ userSchema.methods.generateAccessToken = functon(){
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
-            expiryIn: process.env.ACCESS_TOKEN_EXPIRY
+            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
     )
 }
