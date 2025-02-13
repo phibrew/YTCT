@@ -1,13 +1,13 @@
 import { asyncHandler } from '../utils/asyncHandler.js';
-import { User } from '../models/user.model.js';
+import { User } from '../models/users.models.js';
 import { apiError } from '../utils/apiError.js';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
 import { apiResponse } from '../utils/apiResponse.js';
 
 const registerUser = asyncHandler(async (req, res) => {
-    res.status(200).json({
-        message: "User registered successfully",
-    });
+    // res.status(200).json({
+    //     message: "User registered successfully",
+    // });
 
     // get the user details 
     // verify the details for empty fields or existed user
@@ -17,7 +17,7 @@ const registerUser = asyncHandler(async (req, res) => {
     // return the response
 
     const {fullName, email, username, password} = req.body;
-    console.log("email: ", email);
+    // console.log("email: ", email);
 
     if(
         [fullName, email, username, password].some((field) => field?.trim() ==="")
