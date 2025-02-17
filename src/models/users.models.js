@@ -58,9 +58,9 @@ userSchema.methods.verifyPassword = async function(password){
 }
 
 userSchema.methods.generateAccessToken = function(){
-    return jwt.sign(
+    return jwt.sign(    
         {
-        _id: this.userId,
+        _id: this._id,
         email: this.email,
         username: this.username,
         fullName: this.fullName
@@ -72,16 +72,16 @@ userSchema.methods.generateAccessToken = function(){
     )
 }
 userSchema.methods.generateRefreshToken = function(){
-    return jwt.sign(
+    return jwt.sign(    
         {
-        _id: this.userId,
+        _id: this._id,
         email: this.email,
         username: this.username,
         fullName: this.fullName
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
-            expiryIn: process.env.REFRESH_TOKEN_EXPIRY
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
         }
     )
 }
