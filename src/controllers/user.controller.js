@@ -4,6 +4,7 @@ import { apiError } from '../utils/apiError.js';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
 import { apiResponse } from '../utils/apiResponse.js';
 import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 
 const generateAccessAndRefreshTokens = (async(userId) => {
     try {
@@ -68,9 +69,9 @@ const registerUser = asyncHandler(async (req, res) => {
             fullName,
             email, 
             username: username.toLowerCase(),
-            password, 
-            avatar: avatar.url,
-            coverImage: coverImage?.url || "",
+            password,   
+            avatar: avatar.secure_url,
+            coverImage: coverImage?.secure_url || "",
         }
     )
 

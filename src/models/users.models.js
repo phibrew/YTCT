@@ -15,7 +15,8 @@ const userSchema = new Schema({
         type: String,
         required: true,
         trim: true,
-        index: true
+        index: true,
+        unique: true
     },
     fullName: {
         type: String,
@@ -34,6 +35,18 @@ const userSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: "Video"
+        },
+    ],
+    videos: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Video"
+        },
+    ], 
+    tweets: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Tweet"
         }
     ],
     password: {

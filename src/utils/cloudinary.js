@@ -16,10 +16,10 @@ const uploadOnCloudinary = async (fileLocation) => {
             { resource_type: "auto"});
         
         // console.log("file uploaded on cloudinary: ", response.url)
-        fs.unlinkSync(fileLocation);
+        await fs.promises.unlinkSync(fileLocation);
         return response;
     } catch (error){
-        fs.unlinkSync(fileLocation); //this helps to remove the file from server
+        await fs.promises.unlinkSync(fileLocation); //this helps to remove the file from server
         return null;
     }
 }
