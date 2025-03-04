@@ -39,7 +39,7 @@ const publishAVideo = asyncHandler(async(req, res) => {
         });
     
         // add the video to the user's video collection
-        const user = await User.findByIdAndUpdate(req.user._id, {
+        await User.findByIdAndUpdate(req.user._id, {
             $push: {
                 videos: newVideo._id
             }
@@ -76,8 +76,8 @@ const getAllVideos = asyncHandler(async (req, res) => {
             }
         }
 
-        const videos = await Video.paginate(filter, options);
-        return req.status(200)
+        const videos = await Video.aggregatePaginate(filter, options);
+        return res.status(200)
         .json(new apiResponse(200, videos, "Videos fetched successfully"));
 
     } catch (error) {

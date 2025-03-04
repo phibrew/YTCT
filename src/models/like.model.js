@@ -15,4 +15,4 @@ const likeSchema = new Schema({
     }
 }, {timeStamps: true})
 
-export const like = mongoose.mode("Like", likeSchema);
+export const Like = mongoose.mode("Like", likeSchema);

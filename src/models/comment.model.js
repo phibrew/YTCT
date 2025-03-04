@@ -7,16 +7,18 @@ const commentSchema = new Schema(
         type: String,
         },
         video: {
-            type: Schem.Types.ObjectId,
-            ref: "Video"
+            type: Schema.Types.ObjectId,
+            ref: "Video",
+            required: true
         },
         owner: {
             type: Schema.Types.ObjectId,
-            ref: "User"
+            ref: "User",
+            required: true
         }
     },
-    {timeStamps: true}
+    {timestamps: true}
 )
 
 commentSchema.plugin(mongooseAggregatePaginate);
-export const comment = mongoose.model('Comment', commentSchema);
+export const Comment = mongoose.model('Comment', commentSchema);
