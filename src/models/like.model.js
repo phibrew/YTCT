@@ -1,18 +1,19 @@
 import mongoose, { Schema } from 'mongoose';
 
 const likeSchema = new Schema({
-    comment: {
-        type: Schema.Types.ObjectId,
-        ref: "Comment"
-    },
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User"
     },
-    video: {
+    contentId: {
         type: Schema.Types.ObjectId,
-        ref: "Video"
-    }
-}, {timeStamps: true})
+        required: true,
+    },
+    contentType: {
+        type: String,
+        required: true,
+        enum: ["video", "tweet", "comment"]
+    },
+}, {timestamps: true})
 
-export const Like = mongoose.mode("Like", likeSchema);
+export const Like = mongoose.model("Like", likeSchema);

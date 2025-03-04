@@ -8,14 +8,14 @@ const playListSchema = new Schema({
     description: {
         type: String
     },
-    video: {
+    videos: [{
         type: Schema.Types.ObjectId,
         ref: "Video"
-    },
+    }],
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User"
     }
-}, {timeStamps: true});
+}, {timestamps: true});
 
 export const Playlist = mongoose.model('Playlist', playListSchema);
